@@ -24,14 +24,21 @@ features = ["spin_no_std"]
 [profile.release]
 panic = "abort"
 
+[profile.test]
+opt-level = 1 #add optimization for test profile
+
 [package.metadata.bootimage]
 test-args = [
   "-device", "isa-debug-exit,iobase=0xf4,iosize=0x04", "-serial", "stdio",
-  "-display", "none"  
+  "-display", "none"
 ]
 test-success-exit-code = 33 # (0x10 << 1) | 1
 test-timeout = 30 # (in seconds)
 
 [[test]]
 name = "should_panic"
+harness = false
+
+[[test]]
+name = "stack_overflow"
 harness = false
