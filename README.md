@@ -5,8 +5,8 @@ GatOS is an Small OS developed in RUST Lang following the [Writting an OS in RUS
 
 ## Future ideas
 
-- [] armv7 support
-- [] UEFI support
+- [ ] armv7 support
+- [ ] UEFI support
 
 ---
 Disclaimer
