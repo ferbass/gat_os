@@ -19,11 +19,19 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8c5c959bf675ba4d842740373760b2aeb5b8f5457451cd18370b4c339d4926e9"
 
 [[package]]
+name = "cpuio"
+version = "0.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d531514efb06912141fa65967447de805691b685a7565c87d1765afe34a98aa7"
+
+[[package]]
 name = "gat_os"
 version = "0.1.0"
 dependencies = [
  "bootloader",
  "lazy_static",
+ "pc-keyboard",
+ "pic8259_simple",
  "rlibc",
  "spin",
  "uart_16550",
@@ -38,6 +46,21 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e2abad23fbc42b3700f2f279844dc832adb2b2eb069b2df918f455c4e18cc646"
 dependencies = [
  "spin",
+]
+
+[[package]]
+name = "pc-keyboard"
+version = "0.5.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5c6f2d937e3b8d63449b01401e2bae4041bc9dd1129c2e3e0d239407cf6635ac"
+
+[[package]]
+name = "pic8259_simple"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "af2a5497fb8e59bf8015f67b7dff238d75ef445e03f23edac24ac3a8f09be952"
+dependencies = [
+ "cpuio",
 ]
 
 [[package]]
