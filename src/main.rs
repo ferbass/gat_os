@@ -21,6 +21,17 @@ pub extern "C" fn _start() -> ! {
     // uncomment the line bellow to simulate stack overflow
     // stack_overflow();
 
+    // uncommment the lines bellow to cause a page fault
+    // cause_page_fault();
+
+    // uncoment the block to see the read operation working
+    // cause_page_fault_on_write();
+
+    use x86_64::registers::control::Cr3;
+
+    let (level_4_page_table, _) = Cr3::read();
+    println!("Level 4 page table at: {:?}", level_4_page_table.start_address());
+
     #[cfg(test)]
     test_main();
 
@@ -44,4 +55,20 @@ fn panic(info: &PanicInfo) -> ! {
 #[test_case]
 fn trivial_assertion() {
     assert_eq!(1, 1);
+}
+
+fn cause_page_fault() {
+    let ptr = 0xdeadbeaf as *mut u32;
+    unsafe { *ptr = 42; }
+}
+
+fn cause_page_fault_on_write() {
+    let ptr = 0x20398c as *mut u32;
+    // read from a code page
+    unsafe { let x = *ptr; }
+    println!("=^.^= Read worked");
+
+    // write to a code page
+    unsafe { *ptr = 42; }
+    println!("Write worked");
 }
