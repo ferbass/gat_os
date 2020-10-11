@@ -8,7 +8,7 @@ edition = "2018"
 
 [dependencies]
 rlibc = "1.0.0"
-bootloader = "0.9.11"
+bootloader = { version = "0.9.11", features = ["map_physical_memory"] }
 volatile = "0.2.6"
 spin = "0.5.2"
 x86_64 = "0.12.2"
