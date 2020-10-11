@@ -1,5 +1,7 @@
 # GatOS
 
+![Rust](https://github.com/ferbass/gat_os/workflows/Rust/badge.svg?branch=master)
+
 GatOS is an Small OS developed in RUST Lang following the [Writting an OS in RUST](https://os.phil-opp.com) blog series.
 
 
