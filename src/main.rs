@@ -12,6 +12,7 @@ entry_point!(kernel_main);
 
 fn kernel_main(boot_info: &'static BootInfo) -> ! {
     use gat_os::memory;
+    use gat_os::memory::BootInfoFrameAllocator;
     use x86_64::{structures::paging::Page, VirtAddr};
 
     println!("Meow! {}", "MEOOOOOOOOW!");
@@ -31,6 +32,9 @@ fn kernel_main(boot_info: &'static BootInfo) -> ! {
 
     unsafe { page_ptr.offset(400).write_volatile(0x_f06f_f074_f061_f063)};
 
+    let mut frame_allocator = unsafe {
+        BootInfoFrameAllocator::init(&boot_info.memory_map)
+    };
     //fn stack_overflow() {
     //stack_overflow();
     //}
